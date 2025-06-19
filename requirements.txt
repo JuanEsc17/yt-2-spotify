@@ -1,0 +1,4 @@
+spotipy
+google-api-python-client
+python-dotenv
+rapidfuzz
