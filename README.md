@@ -13,8 +13,8 @@ Este proyecto permite convertir automáticamente una playlist de YouTube Music e
 1. Cloná el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/ytmusic-to-spotify.git
-cd ytmusic-to-spotify
+git clone https://github.com/tu-usuario/yt-2-spotify.git
+cd yt-2-spotify
 ```
 
 2. Instalá las dependencias:
