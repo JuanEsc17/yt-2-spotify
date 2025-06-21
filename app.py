@@ -1,4 +1,4 @@
-from src.spotify_utils import buscar_cancion_mejorada
+from src.spotify_utils import agregar_canciones_a_playlist, buscar_cancion_mejorada, crear_playlist
 from src.utils import limpiar_titulo
 from src.youtube_utils import extract_playlist_id, obtener_videos_de_playlist
 
@@ -33,3 +33,10 @@ if __name__ == "__main__":
         for titulo in no_encontradas:
             print(f"- {titulo}")
     
+    nombre_playlist = input("Ingrese el nombre de la nueva playlist (o deje vacío para usar el predeterminado): ")
+    descripcion_playlist = input("Ingrese la descripción de la nueva playlist (o deje vacío para usar el predeterminado): ")
+
+    playlist_id = crear_playlist(nombre_playlist, descripcion_playlist)
+    agregar_canciones_a_playlist(playlist_id, canciones_encontradas)
+
+    print(f"Playlist '{nombre_playlist}' creada")

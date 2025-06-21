@@ -99,7 +99,7 @@ def agregar_canciones_a_playlist(playlist_id, canciones):
 
     # Spotify permite agregar hasta 100 canciones a la vez
     for i in range(0, len(uris), 100):
-        sp.user_playlist_add_items(
+        sp.playlist_add_items(
             playlist_id,
             uris[i:i + 100]
         )
