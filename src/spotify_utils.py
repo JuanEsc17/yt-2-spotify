@@ -1,15 +1,18 @@
 # This file is part of the Spotify Utils package.
 from rapidfuzz import fuzz, process
-import config
+from dotenv import load_dotenv
+import os
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from src.utils import generar_variantes, limpiar_titulo
 
+load_dotenv()
+
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-    client_id=config.SPOTIFY_CLIENT_ID,
-    client_secret=config.SPOTIFY_CLIENT_SECRET,
-    redirect_uri=config.SPOTIFY_REDIRECT_URI,
-    scope=config.scope
+    client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+    client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+    redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI"),
+    scope=os.getenv("scope")
 ))
 
 # Función para buscar una canción en Spotify (ya no la uso)

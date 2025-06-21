@@ -26,9 +26,24 @@ def limpiar_titulo(titulo):
         str: Título limpio.
     """
     titulo = titulo.lower()
-    titulo = re.sub(r'\(.*?\)', '', titulo)   # Quita cosas entre paréntesis
-    titulo = re.sub(r'\[.*?\]', '', titulo)   # Quita cosas entre corchetes
-    titulo = re.sub(r'official|video|audio|hd|lyrics|letra|oficial|ft|prod|by|x|visualizer', '', titulo) # Quita palabras comunes
-    titulo = re.sub(r'[^a-zA-Z0-9\s]', '', titulo)  # Quita símbolos raros
+
+    # Quitar todo entre paréntesis, corchetes y llaves
+    titulo = re.sub(r"\(.*?\)|\[.*?\]|\{.*?\}", "", titulo)
+
+    # Eliminar emojis y símbolos no alfabéticos (excepto letras, números, espacios)
+    titulo = re.sub(r"[^\w\s]", "", titulo)
+
+    # Eliminar palabras comunes no musicales
+    palabras_irrelevantes = [
+        "official", "video", "videoclip", "versión", "version", "feat", "ft", "audio",
+        "musica", "music", "letra", "lyrics", "serie", "from", "album", "eurovision",
+        "remix", "hd", "video oficial", "videoclip oficial"
+    ]
+    for palabra in palabras_irrelevantes:
+        titulo = titulo.replace(palabra, "")
+
+    # Espacios múltiples → uno solo
+    titulo = re.sub(r"\s+", " ", titulo)
+
     return titulo.strip()
 

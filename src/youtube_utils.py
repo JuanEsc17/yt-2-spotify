@@ -1,5 +1,6 @@
 from googleapiclient.discovery import build
-import config
+from dotenv import load_dotenv
+import os
 import re
 
 # Extraer ID de la playlist a partir del link
@@ -23,7 +24,7 @@ def obtener_videos_de_playlist(playlist_id):
     Returns:
         list: Lista de títulos de los videos en la playlist.
     """
-    youtube = build('youtube', 'v3', developerKey=config.API_KEY)
+    youtube = build('youtube', 'v3', developerKey=os.getenv("API_KEY"))
     videos = []
     next_page_token = None
     while True:

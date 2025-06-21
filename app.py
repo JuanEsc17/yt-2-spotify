@@ -1,8 +1,4 @@
-from googleapiclient.discovery import build
-import re
-import config
-from spotipy.oauth2 import SpotifyOAuth
-from src.spotify_utils import buscar_cancion, buscar_cancion_mejorada
+from src.spotify_utils import buscar_cancion_mejorada
 from src.utils import limpiar_titulo
 from src.youtube_utils import extract_playlist_id, obtener_videos_de_playlist
 
@@ -19,8 +15,6 @@ if __name__ == "__main__":
             print(f"{i}. {c}")
     else:
         print("❌ No se pudo extraer el ID de la playlist.")
-
-    # Supongamos que estos títulos vienen de la playlist de YouTube
 
     print("\n🎯 Buscando canciones en Spotify...\n")
     canciones_encontradas = []

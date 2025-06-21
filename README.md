@@ -23,7 +23,7 @@ cd yt-2-spotify
 pip install -r requirements.txt
 ```
 
-3. Configurá tus credenciales en un archivo config.py:
+3. Configurá tus credenciales en un archivo .env:
 
 ```bash
 SPOTIFY_CLIENT_ID=tu_client_id
@@ -47,7 +47,7 @@ python app.py
 - Funciona solo con playlists públicas de YouTube Music
 - Algunas canciones pueden no encontrarse por diferencias de nombre
 
-### Ejemplo config.py
+### Ejemplo .env
 ```env
 # Spotify Developer credentials
 SPOTIFY_CLIENT_ID=your_spotify_client_id
@@ -64,7 +64,7 @@ ytmusic-to-spotify/
 ├── app.py                # Aplicacion principal
 ├── requirements.txt      # Lista de dependencias
 ├── .gitignore
-├── config.py
+├── .env
 ├── README.md
 └── src/
     ├── __init__.py
