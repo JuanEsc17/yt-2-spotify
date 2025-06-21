@@ -67,3 +67,39 @@ def buscar_cancion_mejorada(titulo_original):
     if mejor_candidato and mejor_candidato["score"] >= 80:
         return mejor_candidato
     return None
+
+def crear_playlist(nombre="Migracion YouTube Music", descripcion="Playlist migrada desde YouTube Music"):
+    """
+    Crea una nueva playlist en Spotify.
+    Args:
+        nombre (str): Nombre de la playlist a crear.
+        descripcion (str): Descripción de la playlist (opcional).
+    Returns:
+        str: ID de la playlist creada.
+    """
+    usuario = sp.current_user()["id"]
+    playlist = sp.user_playlist_create(
+        user=usuario,
+        name=nombre,
+        public=True,
+        description=descripcion
+    )
+    return playlist["id"]
+
+def agregar_canciones_a_playlist(playlist_id, canciones):
+    """
+    Agrega canciones a una playlist existente en Spotify.
+    Args:
+        playlist_id (str): ID de la playlist a la que se agregarán las canciones.
+        canciones (list): Lista de diccionarios con información de las canciones a agregar.
+    Returns:
+        None
+    """
+    uris = [cancion["uri"] for cancion in canciones if "uri" in cancion]
+
+    # Spotify permite agregar hasta 100 canciones a la vez
+    for i in range(0, len(uris), 100):
+        sp.user_playlist_add_items(
+            playlist_id,
+            uris[i:i + 100]
+        )
