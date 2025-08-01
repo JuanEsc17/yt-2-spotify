@@ -18,7 +18,7 @@ def extract_playlist_id(playlist_link):
 # Obtener los videos de la playlist
 def obtener_videos_de_playlist(playlist_id):
     """
-    Obtiene los títulos de los videos de una playlist de YouTube Music.
+    Obtiene los títulos de los videos de una playlist de YouTube Music a partir de su ID.
     Args:
         playlist_id (str): ID de la playlist de YouTube Music.
     Returns:

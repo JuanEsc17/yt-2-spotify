@@ -51,7 +51,7 @@ def buscar_cancion_mejorada(titulo_original):
 
     for variante in variantes:
         titulo_limpio = limpiar_titulo(variante)
-        resultados = sp.search(q=titulo_limpio, type="track", limit=3)
+        resultados = sp.search(q=titulo_limpio, type="track", limit=5)
 
         for item in resultados.get("tracks", {}).get("items", []):
             nombre_spotify = f"{item['name']} - {item['artists'][0]['name']}".lower()
@@ -64,7 +64,7 @@ def buscar_cancion_mejorada(titulo_original):
                     "score": score
                 }
 
-    if mejor_candidato and mejor_candidato["score"] >= 80:
+    if mejor_candidato and mejor_candidato["score"] >= 70:
         return mejor_candidato
     return None
 
